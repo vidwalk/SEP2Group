@@ -1,27 +1,27 @@
-package model;
+package ZAir.domain.model;
 
 public abstract class AbstractPlaces
 {
    private String city;
    private String country;
    private String initials;
-   
+
    public AbstractPlaces(String city)
    {
       this.city = Character.toUpperCase(city.charAt(0)) + city.substring(1).toLowerCase();
       setLocation();
    }
-   
+
    public String getLocation()
    {
       return city + ", " + initials + ", " + country;
    }
-   
+
    public String getInitials()
    {
       return initials;
    }
-   
+
    private void setLocation()
    {
       if (city.equals("Copenhagen"))

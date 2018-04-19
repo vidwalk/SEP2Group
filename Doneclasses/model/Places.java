@@ -1,4 +1,5 @@
-package model;
+package ZAir.domain.model;
+
 public class Places extends AbstractPlaces
 {
 
@@ -6,5 +7,5 @@ public class Places extends AbstractPlaces
    {
       super(city);
    }
-   
+
 }

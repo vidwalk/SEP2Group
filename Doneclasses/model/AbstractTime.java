@@ -1,15 +1,15 @@
-package model;
+package ZAir.domain.model;
 
 public abstract class AbstractTime
 {
    private int hour;
    private int minute;
-   
+
    public AbstractTime(String time)
    {
       setTime(time);
    }
-   
+
    private void setTime(int hour, int minute)
    {
       if (hour >= 24)
@@ -28,7 +28,7 @@ public abstract class AbstractTime
       {
          this.hour = hour;
       }
-       
+
       if (minute < 0)
       {
          this.minute = -(minute % 60);
@@ -51,7 +51,7 @@ public abstract class AbstractTime
          this.minute = minute;
       }
    }
-   
+
    public String toString()
    {
       if (hour < 10 && minute < 10)
@@ -71,7 +71,7 @@ public abstract class AbstractTime
          return hour+":"+minute;
       }
    }
-   
+
    private void setTime(String time)
    {
       if (time.equals("8:00"))

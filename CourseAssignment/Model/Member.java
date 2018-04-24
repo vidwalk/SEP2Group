@@ -12,12 +12,12 @@ public class Member {
 
 	private AbstractPreference abstractPreference;
 
-	public Member(String name, String email, String phone, AbstractPreference abstractPreference) {
+	public Member(String name, String email, String phone, String preference) {
 		this.name = name;
 		this.email = email;
 		paymentYear = 0;
 		this.phone = phone;
-		this.abstractPreference = abstractPreference;
+		this.abstractPreference = PreferenceFactory.getPreference(preference);
 	}
 
 	public void setName(String name) {

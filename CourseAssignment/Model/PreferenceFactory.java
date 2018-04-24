@@ -1,14 +1,20 @@
 package Domain.Model;
 
+import java.util.HashMap;
+
 public class PreferenceFactory {
 
-	private AbstractPreference[] abstractPreference = new AbstractPreference[8];
+	private static HashMap<String, Preference> preferences = new HashMap<String, Preference>();
 
-public String getPreference(String name) //use to get a certain preference
+public static AbstractPreference getPreference(String name) //use to get a certain preference
 {
-	for(int i = 0; i < abstractPreference.length; i++)
-		if(abstractPreference[i].getName().equals(name))
-			return abstractPreference[i].getName();
-	return "no such preference";
+	Preference item = preferences.get(name);
+    if (item == null)
+    {
+       item = new Preference(name);
+       preferences.put(name, item);
+    }
+
+    return item;
 }
 }

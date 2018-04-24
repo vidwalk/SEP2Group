@@ -8,8 +8,11 @@ public class Log {
 
 	private Date date;
 	private static Log instance;
-	public String getTimestamp() { //use this to get the present time when you add a member
+	private Log()
+	{
 		date = Calendar.getInstance().getTime();
+	}
+	public String getTimestamp() { //use this to get the present time when you add a member
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		return sdf.format(date);
 	}

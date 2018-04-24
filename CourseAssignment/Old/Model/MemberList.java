@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MemberList {
+public class MemberList implements MemberModel{
 
 	private ArrayList<Member> member;
 

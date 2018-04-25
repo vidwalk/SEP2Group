@@ -20,30 +20,30 @@ import utility.observer.RemoteSubject;
 import utility.observer.RemoteSubjectDelegate;
 
 public class MemberListClient implements RemoteMemberList, RemoteObserver<String> {
-	private static final long serialVersionUID = 1L;
 	private RemoteMemberList list;
 	private RemoteSubjectDelegate<String> rsd;
 	public MemberListClient(String host) throws IOException, NotBoundException {
+		super();
 		list = (RemoteMemberList) Naming.lookup(host);
+		rsd = new RemoteSubjectDelegate<String>(this);
 		UnicastRemoteObject.exportObject(this, 0);
 		list.addObserver(this);
-		rsd = new RemoteSubjectDelegate<String>(this);
 	}
 
 	@Override
-	public synchronized void addMember(Member member) throws RemoteException {
+	public void addMember(Member member) throws RemoteException {
 		list.addMember(member);
-		announce("A member has been added" + member);
+		announce("A member has been added " + member);
 	}
 
 	@Override
-	public synchronized  Member[] getNotPaidMembers() throws RemoteException {
+	public  Member[] getNotPaidMembers() throws RemoteException {
 		announce("A list of members that did not pay: " + list.getNotPaidMembers());
 		return list.getNotPaidMembers();
 	}
 
 	@Override
-	public synchronized Member[] getPaidMembers() throws RemoteException {
+	public  Member[] getPaidMembers() throws RemoteException {
 		announce("A list of members that did pay: " + list.getPaidMembers());
 		return list.getPaidMembers();
 	}

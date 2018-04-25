@@ -11,41 +11,32 @@ import Domain.Model.MemberList;
 import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubject;
 
-public class MemberListModelManager extends Observable implements RemoteMemberList  {
+public class MemberListModelManager implements RemoteMemberList  {
 
-	private MemberList list;
-	public MemberListModelManager() throws IOException {
-		list = new MemberList();
-		try {
-			MemberListClient client = new MemberListClient("rmi://localhost:1099/Member");
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	private RemoteMemberList list;
+	public MemberListModelManager() throws IOException, NotBoundException {
+		list= new MemberListClient("rmi://localhost:1099/Member");
 	}
 
 	@Override
-	public void addMember(Member member) {
+	public void addMember(Member member) throws RemoteException {
 		list.addMember(member);
+
 	}
 
 	@Override
-	public Member[] getNotPaidMembers() {
+	public Member[] getNotPaidMembers() throws RemoteException {
 		return list.getNotPaidMembers();
 	}
 
 	@Override
-	public Member[] getPaidMembers() {
+	public Member[] getPaidMembers() throws RemoteException {
 		return list.getPaidMembers();
 	}
 
 	@Override
-	public Member removeMember(int index) {
+	public Member removeMember(int index) throws RemoteException {
 		return list.removeMember(index);
-	}
-
-	public void annouce(String msg) {
-		notifyObservers(msg);
 	}
 
 	@Override

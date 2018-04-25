@@ -13,10 +13,10 @@ import Domain.Model.Member;
 import Domain.Model.MemberModel;
 import utility.observer.AbstractRemoteSubject;
 import utility.observer.RemoteObserver;
+import utility.observer.RemoteSubject;
 import utility.observer.RemoteSubjectDelegate;
 
 public class MemberListServer implements RemoteMemberList {
-	private static final long serialVersionUID = 1L;
 	private RemoteMemberList list;
 	private RemoteSubjectDelegate<String> rsd;
 	public MemberListServer(RemoteMemberList list) {
@@ -79,5 +79,6 @@ public class MemberListServer implements RemoteMemberList {
 		System.out.println("Message: " + msg);
 		rsd.notifyObservers(msg);
 	}
+
 
 }

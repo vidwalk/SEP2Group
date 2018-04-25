@@ -1,6 +1,8 @@
 package Domain.Model;
 
-public interface MemberModel
+import java.io.Serializable;
+
+public interface MemberModel extends Serializable
 {
    public void addMember(Member member);
    public Member[] getNotPaidMembers();

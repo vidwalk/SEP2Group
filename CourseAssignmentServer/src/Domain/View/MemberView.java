@@ -84,6 +84,6 @@ public class MemberView implements ViewInterface, Runnable{
 
 	@Override
 	public void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
-		System.out.println(updateMsg);
+		System.out.println(" " + updateMsg);
 	}
 }

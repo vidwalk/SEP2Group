@@ -5,9 +5,10 @@ import java.util.Observer;
 import java.util.Scanner;
 
 import Domain.Controller.MemberController;
+import utility.observer.RemoteSubject;
 
 
-public class MemberView implements ViewInterface, Runnable, Observer{
+public class MemberView implements ViewInterface, Runnable{
 
 	private Scanner keyboard;
 	private MemberController controller;
@@ -83,8 +84,10 @@ public class MemberView implements ViewInterface, Runnable, Observer{
 		System.out.println("Input " + text + ": ");
 	}
 
+
 	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("result" + arg);
+	public void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
+		System.out.println(" " + updateMsg);
 	}
+
 }

@@ -6,6 +6,10 @@ import java.util.GregorianCalendar;
 
 public class MemberList implements MemberModel{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Member> member;
 
 	public MemberList() {

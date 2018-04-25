@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class Member implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String name;
 
 	private String email;
@@ -20,7 +25,6 @@ public class Member implements Serializable{
 		this.paymentYear = paymentYear;
 		this.phone = phone;
 		this.abstractPreference = PreferenceFactory.getPreference(preference);
-		System.out.println("gayboi");
 	}
 
 	public void setName(String name) {

@@ -1,7 +1,13 @@
 package Domain.Model;
 
-public abstract class AbstractPreference {
+import java.io.Serializable;
 
+public abstract class AbstractPreference implements Serializable{
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private String eventType;
 	private String name;
 
@@ -10,7 +16,10 @@ public abstract class AbstractPreference {
 		setEventType(); // we create a preference using the name of it and the event type attached to it
 		// which is checked by the method
 	}
+	public AbstractPreference()
+	{
 
+	}
 	public void setEventType() {
 		if (name.equals("Astrology"))
 			eventType = "Astrology Event";

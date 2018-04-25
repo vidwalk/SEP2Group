@@ -1,9 +1,14 @@
 package Domain.Model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class PreferenceFactory {
+public class PreferenceFactory implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private static HashMap<String, Preference> preferences = new HashMap<String, Preference>();
 
 public static AbstractPreference getPreference(String name) //use to get a certain preference

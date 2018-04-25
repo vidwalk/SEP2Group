@@ -1,4 +1,5 @@
 package Domain.View;
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
@@ -54,7 +55,12 @@ public class MemberView implements ViewInterface, Runnable, Observer{
 	        	 txt = "paid";
 
 
-	         controller.execute(txt);
+	         try {
+				controller.execute(txt);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 	         if (choice == 0)
 	         {
@@ -79,6 +85,6 @@ public class MemberView implements ViewInterface, Runnable, Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println(arg);
+		System.out.println("result" + arg);
 	}
 }

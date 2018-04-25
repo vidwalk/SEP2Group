@@ -11,13 +11,13 @@ import utility.observer.RemoteSubject;
 import java.io.Serializable;
 
 public interface RemoteMemberList extends RemoteSubject<String> {
-	public void addMember(Member member);
+	public void addMember(Member member) throws RemoteException;
 
-	public Member[] getNotPaidMembers();
+	public Member[] getNotPaidMembers() throws RemoteException;
 
-	public Member[] getPaidMembers();
+	public Member[] getPaidMembers() throws RemoteException;
 
-	public Member removeMember(int index);
+	public Member removeMember(int index) throws RemoteException;
 
 
 }

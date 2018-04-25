@@ -73,4 +73,5 @@ public class MemberList implements MemberModel{
 			result = member.get(i).toString() + " ";
 		return result;
 	}
+
 }

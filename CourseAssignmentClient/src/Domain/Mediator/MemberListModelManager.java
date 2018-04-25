@@ -8,16 +8,16 @@ import java.util.Observable;
 
 import Domain.Model.Member;
 import Domain.Model.MemberList;
+import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubject;
 
-public class MemberListModelManager extends Observable implements MemberListModel  {
+public class MemberListModelManager extends Observable implements RemoteMemberList  {
 
 	private MemberList list;
-
 	public MemberListModelManager() throws IOException {
 		list = new MemberList();
 		try {
-			MemberListClient client = new MemberListClient("rmi://localhost:1099/Member", this);
+			MemberListClient client = new MemberListClient("rmi://localhost:1099/Member");
 		} catch (NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,6 +46,18 @@ public class MemberListModelManager extends Observable implements MemberListMode
 
 	public void annouce(String msg) {
 		notifyObservers(msg);
+	}
+
+	@Override
+	public void addObserver(RemoteObserver<String> o) throws RemoteException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void deleteObserver(RemoteObserver<String> o) throws RemoteException {
+		// TODO Auto-generated method stub
+
 	}
 
 }

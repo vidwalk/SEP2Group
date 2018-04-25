@@ -17,12 +17,12 @@ import utility.observer.RemoteSubjectDelegate;
 
 public class MemberListServer implements RemoteMemberList {
 	private static final long serialVersionUID = 1L;
-	private MemberModel list;
+	private RemoteMemberList list;
 	private RemoteSubjectDelegate<String> rsd;
-	public MemberListServer(MemberModel list) {
+	public MemberListServer(RemoteMemberList list) {
 		startRegistry();
 		try {
-
+			rsd = new RemoteSubjectDelegate<String>(this);
 			UnicastRemoteObject.exportObject(this, 0);
 			Naming.rebind("Member", this);
 			System.out.println("Server started...");
@@ -46,23 +46,24 @@ public class MemberListServer implements RemoteMemberList {
 	@Override
 	public synchronized void addMember(Member member) throws RemoteException {
 		list.addMember(member);
+		announce("A member has been added" + member);
 	}
 
 	@Override
 	public synchronized  Member[] getNotPaidMembers() throws RemoteException {
-
+		announce("A list of members that did not pay: " + list.getNotPaidMembers());
 		return list.getNotPaidMembers();
 	}
 
 	@Override
 	public synchronized Member[] getPaidMembers() throws RemoteException {
-
+		announce("A list of members that did pay: " + list.getPaidMembers());
 		return list.getPaidMembers();
 	}
 
 	@Override
 	public synchronized Member removeMember(int index) throws RemoteException {
-
+		announce("A member has been removed");
 		return list.removeMember(index);
 	}
 	@Override

@@ -20,6 +20,7 @@ public class Member implements Serializable{
 		this.paymentYear = paymentYear;
 		this.phone = phone;
 		this.abstractPreference = PreferenceFactory.getPreference(preference);
+		System.out.println("gayboi");
 	}
 
 	public void setName(String name) {

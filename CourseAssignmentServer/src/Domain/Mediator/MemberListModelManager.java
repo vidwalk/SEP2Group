@@ -1,42 +1,54 @@
 package Domain.Mediator;
 
+import java.rmi.RemoteException;
+
 import Domain.Model.Member;
 import Domain.Model.MemberList;
 import Domain.Model.MemberModel;
 import utility.observer.AbstractRemoteSubject;
+import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubjectDelegate;
 
-public class MemberListModelManager implements MemberModel {
+public class MemberListModelManager implements RemoteMemberList {
 
 	private MemberList list;
-	private MemberListServer server;
-	public MemberListModelManager()
-	{
+
+	public MemberListModelManager() {
 		list = new MemberList();
-		MemberListServer server = new MemberListServer(this);
-	}
-	@Override
-	public synchronized void addMember(Member member) {
-		list.addMember(member);
-		server.announce("A member has been added" + member);
 	}
 
 	@Override
-	public synchronized Member[] getNotPaidMembers() {
-		server.announce("A list of members that did not pay: " + list.getNotPaidMembers());
+	public synchronized void addMember(Member member) throws RemoteException {
+		list.addMember(member);
+
+	}
+
+	@Override
+	public synchronized Member[] getNotPaidMembers() throws RemoteException {
+
 		return list.getNotPaidMembers();
 	}
 
 	@Override
-	public synchronized Member[] getPaidMembers() {
-		server.announce("A list of members that did pay: " + list.getPaidMembers());
+	public synchronized Member[] getPaidMembers() throws RemoteException {
+
 		return list.getPaidMembers();
 	}
 
 	@Override
-	public synchronized Member removeMember(int index) {
-		server.announce("A member has been removed");
+	public synchronized Member removeMember(int index) throws RemoteException {
+
 		return list.removeMember(index);
+	}
+
+	@Override
+	public void addObserver(RemoteObserver<String> o) throws RemoteException {
+
+	}
+
+	@Override
+	public void deleteObserver(RemoteObserver<String> o) throws RemoteException {
+
 	}
 
 }

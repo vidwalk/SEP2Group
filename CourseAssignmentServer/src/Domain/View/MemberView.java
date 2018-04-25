@@ -54,7 +54,12 @@ public class MemberView implements ViewInterface, Runnable{
 	        	 txt = "paid";
 
 
-	         controller.execute(txt);
+	         try {
+				controller.execute(txt);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 	         if (choice == 0)
 	         {

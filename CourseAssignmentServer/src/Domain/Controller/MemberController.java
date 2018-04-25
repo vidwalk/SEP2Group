@@ -1,5 +1,8 @@
 package Domain.Controller;
 
+import java.rmi.RemoteException;
+
+import Domain.Mediator.RemoteMemberList;
 import Domain.Model.Member;
 import Domain.Model.MemberModel;
 import Domain.View.MemberView;
@@ -7,16 +10,16 @@ import Domain.View.ViewInterface;
 
 public class MemberController
 {
-   private MemberModel model;
+   private RemoteMemberList model;
    private ViewInterface view;
 
-   public MemberController(MemberModel model, ViewInterface view)
+   public MemberController(RemoteMemberList model, ViewInterface view)
    {
       this.model = model;
       this.view = view;
    }
 
-   public void execute(String what)
+   public void execute(String what) throws RemoteException
    {
       if (what.equalsIgnoreCase("add"))
       {

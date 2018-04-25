@@ -1,6 +1,8 @@
 package Domain.Model;
 
-public class Preference extends AbstractPreference {
+import java.io.Serializable;
+
+public class Preference extends AbstractPreference implements Serializable {
 
 	public static final String[] LEGAL_NAMES = { "Astrology", "Yoga", "Trips", "Meditation", "Workshop",
 			"Reincarnation", "Karma", "Alternative Health Care" }; // certain preferences

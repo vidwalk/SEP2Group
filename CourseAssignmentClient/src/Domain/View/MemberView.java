@@ -1,10 +1,12 @@
 package Domain.View;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 import Domain.Controller.MemberController;
 
 
-public class MemberView implements ViewInterface, Runnable{
+public class MemberView implements ViewInterface, Runnable, Observer{
 
 	private Scanner keyboard;
 	private MemberController controller;
@@ -73,5 +75,10 @@ public class MemberView implements ViewInterface, Runnable{
 	public void show(String text)
 	{
 		System.out.println("Input " + text + ": ");
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		System.out.println(arg);
 	}
 }

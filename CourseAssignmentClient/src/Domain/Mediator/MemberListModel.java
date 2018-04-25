@@ -3,6 +3,7 @@ package Domain.Mediator;
 import java.rmi.RemoteException;
 
 import Domain.Model.Member;
+import utility.observer.RemoteObserver;
 
 public interface MemberListModel
 {

@@ -2,7 +2,7 @@ package Domain.Model;
 
 import java.io.Serializable;
 
-public class Member {
+public class Member implements Serializable{
 
 	private String name;
 

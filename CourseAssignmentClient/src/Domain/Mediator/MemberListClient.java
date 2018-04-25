@@ -1,6 +1,7 @@
 package Domain.Mediator;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,21 +11,26 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Observable;
+import java.util.Observer;
 
 import Domain.Model.Member;
+import utility.observer.RemoteObserver;
+import utility.observer.RemoteSubject;
 
 
 
 
 
-public class MemberListClient implements MemberListModel
-{
+public class MemberListClient implements MemberListModel, RemoteObserver<String>{
 
    private RemoteMemberList list;
-
-   public MemberListClient(String host) throws IOException, NotBoundException
+   private MemberListModelManager manager;
+   public MemberListClient(String host, MemberListModelManager manager) throws IOException, NotBoundException
    {
       list = (RemoteMemberList) Naming.lookup(host);
+      list.addObserver(this);
+      this.manager = manager;
    }
 
 
@@ -48,5 +54,17 @@ public class MemberListClient implements MemberListModel
 	public Member removeMember(int index) {
 		return list.removeMember(index);
 	}
+
+
+
+	@Override
+	public void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
+		manager.annouce(updateMsg);
+	}
+
+
+
+
+
 
 }

@@ -4,8 +4,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import Domain.Model.Member;
+import utility.observer.RemoteSubject;
 
-public interface RemoteMemberList extends Remote {
+public interface RemoteMemberList extends RemoteSubject<String> {
 	public void addMember(Member member) throws RemoteException;
 
 	public Member[] getNotPaidMembers() throws RemoteException;

@@ -1,7 +1,9 @@
 package Domain.View;
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 import Domain.Controller.MemberController;
+import utility.observer.RemoteSubject;
 
 
 public class MemberView implements ViewInterface, Runnable{
@@ -73,5 +75,10 @@ public class MemberView implements ViewInterface, Runnable{
 	public void show(String text)
 	{
 		System.out.println("Input " + text + ": ");
+	}
+
+	@Override
+	public void update(RemoteSubject<String> subject, String updateMsg) throws RemoteException {
+		System.out.println(updateMsg);
 	}
 }

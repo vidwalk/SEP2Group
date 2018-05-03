@@ -2,7 +2,7 @@ package ZAir.domain.model;
 
 import java.util.Random;
 
-public class FlightDetails {
+public abstract class FlightDetails {
 
 	private Date dateDeparture;
 	private Date dateArrival;

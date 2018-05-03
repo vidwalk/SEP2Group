@@ -7,8 +7,9 @@ public class Ticket {
 	private Seat seat;
 	private String ticketID;
 	private double price;
-
-	public Ticket(Seat seat) {
+	private FlightDetails flight;
+	public Ticket(Seat seat, FlightDetails flight) {
+		this.flight = flight;
 		this.seat = seat;
 		ticketID = UUID.randomUUID().toString().substring(30).toUpperCase();
 	}

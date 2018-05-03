@@ -25,7 +25,7 @@ public class FlightList {
 		Flight[] result = new Flight[flights.size()];
 		int count = 0;
 		for (int i = 0; i < flights.size(); i++)
-			if (flights.get(i).getFlightDetails().getDateArrival().getDay() == currentDate.get(Calendar.DAY_OF_MONTH)) {
+			if (flights.get(i).getDateArrival().getDay() == currentDate.get(Calendar.DAY_OF_MONTH)) {
 				result[count] = flights.get(i);
 				count++;
 			}

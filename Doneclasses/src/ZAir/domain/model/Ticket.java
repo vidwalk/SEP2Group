@@ -6,7 +6,6 @@ public class Ticket {
 
 	private Seat seat;
 	private String ticketID;
-	private double price;
 	private FlightDetails flight;
 	public Ticket(Seat seat, FlightDetails flight) {
 		this.flight = flight;
@@ -32,14 +31,6 @@ public class Ticket {
 
 	public void setTicketID(String ticketID) {
 		this.ticketID = ticketID;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 }

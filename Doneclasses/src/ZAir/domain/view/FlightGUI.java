@@ -1,4 +1,4 @@
-package view;
+package ZAir.domain.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -29,9 +29,9 @@ import com.toedter.calendar.JDateChooser;
 
 public class FlightGui extends JFrame implements FlightView
 {
-   
+
    private ButtonHandler handler;
-   private JPanel mainPanel; 
+   private JPanel mainPanel;
    private JPanel loginPanel;
    private JPanel flightPanel;
    private JPanel addFlightPanel;
@@ -67,8 +67,8 @@ public class FlightGui extends JFrame implements FlightView
    private JComboBox comboBox_3;
    private JButton btnSave;
    private JButton btnBack;
-   
-   
+
+
    public FlightGui()
    {
       super("ZAir");
@@ -76,7 +76,7 @@ public class FlightGui extends JFrame implements FlightView
       initializeComponents();
       addComponentsToFrame();
    }
-   
+
    public void start()
    {
       handler = new ButtonHandler(this);
@@ -103,7 +103,7 @@ public class FlightGui extends JFrame implements FlightView
       btnLogin = new JButton("log-in");
       btnSignUp = new JButton("sign up");
       flightList = new JList<>();
-      
+
       // just for design
       flightList.setModel(new AbstractListModel() {
          String[] values = new String[] {"lol", "lol2"};
@@ -117,7 +117,7 @@ public class FlightGui extends JFrame implements FlightView
       flightList.setFont(new Font("Arial", Font.BOLD,16));
       flightList.setFixedCellHeight(40);
       // to delete later
-      
+
       flightPanel = new JPanel();
       btnAdd = new JButton("Add");
       btnRemove = new JButton("Remove");
@@ -181,7 +181,7 @@ public class FlightGui extends JFrame implements FlightView
       panel_1.add(btnSignUp);
       mainPanel.add(loginPanel, "login-panel"); //name for loginPanel for CardLayout
      // finished login panel
-      
+
       // flight panel
       flightPanel.setBounds(100, 100, 450, 300);
       flightPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -207,7 +207,7 @@ public class FlightGui extends JFrame implements FlightView
       panel_2.add(btnOk);
       mainPanel.add(flightPanel, "flight-panel");  //name for flightPanel for CardLayout
       //finished flight panel
-      
+
       // add flight panel
       addFlightPanel.setBounds(100, 100, 450, 300);
       addFlightPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -248,8 +248,8 @@ public class FlightGui extends JFrame implements FlightView
       addFlightPanel.add(btnBack);
       mainPanel.add(addFlightPanel, "add-flight");  //name for addFlightPanel for CardLayout
       //finished add flight panel
-      
-      
+
+
       // sets contentPane
       setContentPane(mainPanel);
       //sets ContentPane
@@ -260,7 +260,7 @@ public class FlightGui extends JFrame implements FlightView
       CardLayout layout = (CardLayout) mainPanel.getLayout();
       layout.show(mainPanel, panel);
    }
-   
+
    @Override
    public void show(String value)
    {
@@ -278,7 +278,7 @@ public class FlightGui extends JFrame implements FlightView
       return output;
       // gets input from textfields using a String token
    }
-   
+
    public static void main(String[] args)
    {
       FlightGui gui = new FlightGui();

@@ -1,5 +1,8 @@
-package ZAir.domain.view;
+package view;
 
-public interface FlightView {
-
+public interface FlightView
+{
+   //void start(CdController controller);
+   String get(String what);
+   void show(String value);
 }

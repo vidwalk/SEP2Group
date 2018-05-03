@@ -1,9 +1,31 @@
-package ZAir.domain.view;
+package view;
 
-import ZAir.domain.controller.FlightController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class ButtonHandler {
+import javax.swing.JButton;
 
-	private FlightController flightController;
+public class ButtonHandler implements ActionListener
+{
+
+   private FlightGui gui;
+   
+   public ButtonHandler(FlightGui gui)
+   {
+      this.gui = gui;
+   }
+   
+   @Override
+   public void actionPerformed(ActionEvent e)
+   {
+      if (((JButton) e.getSource()).getText().startsWith("log"))
+      {
+         gui.switchPanelTo("flight-panel");
+      }
+      else if (((JButton) e.getSource()).getText().startsWith("Add"))
+      {
+         gui.switchPanelTo("add-flight");
+      }
+   }
 
 }

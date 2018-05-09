@@ -3,11 +3,11 @@ import java.util.HashMap;
 
 public class PlacesFactory
 {
-   private static HashMap<String, Places> places = new HashMap<String, Places>();
+   private static HashMap<String, AbstractPlaces> places = new HashMap<String, AbstractPlaces>();
 
    public static AbstractPlaces getPlace(String city)
    {
-      Places item = places.get(city);
+	   AbstractPlaces item = places.get(city);
       if (item == null)
       {
          item = new Places(city);

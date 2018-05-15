@@ -1,7 +1,10 @@
-package ZAir.domain.mediator;
-
+package zair.domain.mediator;
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-public interface RemoteFlightList extends Remote {
+import zair.domain.model.Flight;
 
+public interface RemoteFlightList extends Remote
+{
+   //nothing
 }

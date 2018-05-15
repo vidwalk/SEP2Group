@@ -1,4 +1,4 @@
-package ZAir.domain.model;
+package zair.domain.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -10,31 +10,37 @@ public class Date
    private int month;
    private int year;
 
-   public int getDay() {
-	return day;
-}
+   public int getDay()
+   {
+      return day;
+   }
 
-public void setDay(int day) {
-	this.day = day;
-}
+   public void setDay(int day)
+   {
+      this.day = day;
+   }
 
-public int getMonth() {
-	return month;
-}
+   public int getMonth()
+   {
+      return month;
+   }
 
-public void setMonth(int month) {
-	this.month = month;
-}
+   public void setMonth(int month)
+   {
+      this.month = month;
+   }
 
-public int getYear() {
-	return year;
-}
+   public int getYear()
+   {
+      return year;
+   }
 
-public void setYear(int year) {
-	this.year = year;
-}
+   public void setYear(int year) 
+   {
+      this.year = year;
+   }
 
-public Date(int day, int month, int year)
+   public Date(int day, int month, int year)
    {
       setDate(day, month, year);
    }
@@ -152,5 +158,24 @@ public Date(int day, int month, int year)
       {
          return day + "/" + month + "/" + year;
       }
+   }
+   
+   public boolean isBefore(Date other)
+   {
+      int d1 = year * 360 + month * 30 + day;
+      int d2 = other.year * 360 + other.month * 30 + other.day;
+      return d1 < d2;
+   }
+   
+   public boolean equals(Object obj)
+   {
+      if (! (obj instanceof Date))
+      {
+         return false;
+      }
+      
+      Date other = (Date) obj;
+      return day == other.getDay() && month == other.getMonth()
+            && year == other.getYear();
    }
 }

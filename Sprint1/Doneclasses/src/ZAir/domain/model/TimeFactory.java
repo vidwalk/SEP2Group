@@ -1,4 +1,4 @@
-package ZAir.domain.model;
+package zair.domain.model;
 
 import java.util.HashMap;
 

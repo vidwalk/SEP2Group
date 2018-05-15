@@ -1,5 +1,13 @@
-package ZAir.domain.mediator;
+package zair.domain.mediator;
 
-public interface FlightModel {
+import zair.domain.model.Flight;
 
+public interface FlightModel
+{
+
+   public void addFlight(Flight flight);
+   public void removeFlight(int index);
+   public Flight[] getTodayFlights();
+   public Flight[] getAllFlights();
+   public Flight getFlight(String id);
 }

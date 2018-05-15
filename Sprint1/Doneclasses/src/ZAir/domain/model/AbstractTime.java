@@ -1,4 +1,4 @@
-package ZAir.domain.model;
+package zair.domain.model;
 
 public abstract class AbstractTime
 {
@@ -8,6 +8,16 @@ public abstract class AbstractTime
    public AbstractTime(String time)
    {
       setTime(time);
+   }
+   
+   public int getHour()
+   {
+      return hour;
+   }
+   
+   public int getMinute()
+   {
+      return minute;
    }
 
    private void setTime(int hour, int minute)

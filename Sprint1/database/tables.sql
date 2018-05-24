@@ -12,12 +12,13 @@ CREATE TABLE zair."Flight"
     price zair."price",
     PRIMARY KEY ("flightID")
 );
+
 CREATE TABLE zair."Ticket"
 (
     "ticketID" serial NOT NULL,
     "flightID" serial NOT NULL,
     seat zair."Seat" NOT NULL,
-    "customerID" serial NOT NULL,
+    "customerID" character(20) NOT NULL,
     PRIMARY KEY ("ticketID", "flightID"),
     UNIQUE("ticketID"),
     CONSTRAINT "flightID" FOREIGN KEY ("flightID")
@@ -31,18 +32,18 @@ CREATE TABLE zair."Ticket"
 );
 CREATE TABLE zair."Customer"
 (
-    "customerID" serial NOT NULL,
+    "customerID" character(20) NOT NULL,
     "fName" zair."Name" NOT NULL,
     "lName" zair."Name" NOT NULL,
     email zair."email",
-    "ticketID" serial NOT NULL,
     "passportNo" character(15),
     "phone" character(15),
     PRIMARY KEY ("customerID")
 );
 CREATE TABLE zair."CustomerCredentials"
 (
-    "customerID" serial NOT NULL,
+    "customerID" character(20) NOT NULL,
+    "userID" character(20) NOT NULL,
     password zair."password" NOT NULL,
     FOREIGN KEY ("customerID")
         REFERENCES zair."Customer" ("customerID") MATCH SIMPLE

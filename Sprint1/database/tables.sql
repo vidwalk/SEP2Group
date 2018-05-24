@@ -17,12 +17,17 @@ CREATE TABLE zair."Ticket"
     "ticketID" serial NOT NULL,
     "flightID" serial NOT NULL,
     seat zair."Seat" NOT NULL,
+    "customerID" serial NOT NULL,
     PRIMARY KEY ("ticketID", "flightID"),
+    UNIQUE("ticketID"),
     CONSTRAINT "flightID" FOREIGN KEY ("flightID")
         REFERENCES zair."Flight" ("flightID") MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        UNIQUE("ticketID")
+        ON DELETE NO ACTION,  
+    CONSTRAINT "customerID" FOREIGN KEY ("customerID")
+    REFERENCES zair."Customer" ("customerID") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
 );
 CREATE TABLE zair."Customer"
 (
@@ -31,11 +36,9 @@ CREATE TABLE zair."Customer"
     "lName" zair."Name" NOT NULL,
     email zair."email",
     "ticketID" serial NOT NULL,
-    PRIMARY KEY ("customerID"),
-    FOREIGN KEY ("ticketID")
-        REFERENCES zair."Ticket" ("ticketID") MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+    "passportNo" character(15),
+    "phone" character(15),
+    PRIMARY KEY ("customerID")
 );
 CREATE TABLE zair."CustomerCredentials"
 (
